@@ -12,6 +12,12 @@ def main(page: ft.Page):
         {'title': 'jogar Mário', 'done': False}
     ]
 
+    def delete_habit(e, habit_title):
+        habit = next((hl for hl in habits_list if hl['title'] == habit_title), None)
+        if habit:
+            habits_list.remove(habit)
+            refresh_habits_ui()
+
     def edit_habit(e, habit_title):
         #Encontra o hábito que está sendo editado
         habit = next ((hl for hl in habits_list if hl['title'] == habit_title), None)
@@ -46,6 +52,11 @@ def main(page: ft.Page):
                         icon = ft.icons.EDIT,
                         icon_color = ft.colors.BLACK,
                         on_click = lambda e, hl=hl: edit_habit(e, hl['title'])
+                    ),
+                    ft.IconButton(
+                        icon=ft.icons.DELETE,
+                        icon_color=ft.colors.BLACK,
+                        on_click=lambda e, hl=hl['title']: delete_habit(e, hl)
                     )
                 ]
             ) for hl in habits_list
@@ -76,12 +87,17 @@ def main(page: ft.Page):
                         value=hl['done'],
                         on_change=change   
                      ),
-                 ft.IconButton(
-                     icon=ft.icons.EDIT,
-                     icon_color = ft.colors.BLACK,
-                     on_click = lambda e, hl=hl:edit_habit(e, hl['title'])
-               
-                 )
+                    ft.IconButton(
+                        icon=ft.icons.EDIT,
+                        icon_color = ft.colors.BLACK,
+                        on_click = lambda e, hl=hl:edit_habit(e, hl['title'])
+                
+                    ),
+                     ft.IconButton(
+                        icon=ft.icons.DELETE,
+                        icon_color=ft.colors.BLACK,
+                        on_click=lambda e, hl=hl['title']: delete_habit(e, hl)
+                    ),
                 ]
             )for hl in habits_list
         ]
@@ -141,8 +157,12 @@ def main(page: ft.Page):
                                     icon=ft.icons.EDIT,
                                     icon_color=ft.colors.BLACK,
                                     on_click = lambda e, hl=hl: edit_habit (e, hl['title'])
-                                )
-                                  
+                                ),
+                                ft.IconButton(
+                                    icon=ft.icons.DELETE,
+                                    icon_color=ft.colors.BLACK,
+                                    on_click=lambda e, hl=hl['title']: delete_habit(e, hl)
+                                ),   
                             ]
                         )for hl in habits_list
 
