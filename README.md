@@ -1,9 +1,19 @@
-# A habitos Flet app
+# A habitos App
+Um aplicativo para controle de hábitos diários.
 
-An example of a minimal Flet app.
+## Requisitos
 
-To run the app:
+-Phyton 3.x
+-Biblioteca Flet
+-SQLite
+-sistema Operacional Windows
 
-```
-flet run [app_directory]
-```
+## Instalação
+1. clone o repositório para sua máquina local
+2. Execute o comando flet run no cmd
+
+
+
+
+
+
