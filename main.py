@@ -34,7 +34,7 @@ def main(page: ft.Page):
     page.padding = ft.padding.all(30)
     page.window_height = 960
     page.window_width = 600
-    page.window_resizable = False
+    page.window_resizable = True
 
     init_db()
 
@@ -61,7 +61,12 @@ def main(page: ft.Page):
 
         if habit is not None:
             #Substituir o check box por um Textfield
-            index = habits_list.index(habit)
+            index = 0
+            for i, h in enumerate(habits_list):
+                if h[0]  == habit_id:
+                    index = i
+                    break
+        if index is not None:
             habits.content.controls[index] = ft.Row(
                 controls =[
                     ft.TextField(
